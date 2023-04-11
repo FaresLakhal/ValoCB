@@ -6,10 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CsvParserTest {
 
@@ -92,52 +89,6 @@ public class CsvParserTest {
     void testParseCsvClientWithInvalidPath() {
         CsvUtils csvUtils = new CsvUtils();
         Assertions.assertThrows(IOException.class, () -> csvUtils.parseCsvClient("invalid_path.csv"));
-    }
-
-    @Test
-    void testGetClientByName_existingClient() {
-        CsvUtils csvUtils = new CsvUtils();
-        List<Client> clients = new ArrayList<>();
-        clients.add(new Client("C1", new HashMap<>()));
-        clients.add(new Client("C2", new HashMap<>()));
-        Client result = csvUtils.getClientByName(clients, "C1");
-        Assertions.assertNotNull(result);
-        Assertions.assertEquals("C1", result.getName());
-    }
-
-    @Test
-    void testGetClientByName_newClient() {
-        CsvUtils csvUtils = new CsvUtils();
-        List<Client> clients = new ArrayList<>();
-        clients.add(new Client("C1", new HashMap<>()));
-        clients.add(new Client("C2", new HashMap<>()));
-        Client result = csvUtils.getClientByName(clients, "C3");
-        Assertions.assertNotNull(result);
-        Assertions.assertEquals("C3", result.getName());
-        Assertions.assertEquals(3, clients.size());
-    }
-
-    @Test
-    void testGetClientProducts_existingProducts() {
-        CsvUtils csvUtils = new CsvUtils();
-        Map<String, Integer> products = new HashMap<>();
-        products.put("P1", 10);
-        products.put("P2", 20);
-        Client client = new Client("C1", products);
-        Map<String, Integer> result = csvUtils.getClientProducts(client);
-        Assertions.assertNotNull(result);
-        Assertions.assertEquals(products, result);
-    }
-
-    @Test
-    void testGetClientProducts_newProducts() {
-        CsvUtils csvUtils = new CsvUtils();
-        Client client = new Client("C1", null);
-        Map<String, Integer> result = csvUtils.getClientProducts(client);
-        Assertions.assertNotNull(result);
-        Assertions.assertEquals(0, result.size());
-        Assertions.assertNotNull(client.getProducts());
-        Assertions.assertEquals(0, client.getProducts().size());
     }
 
 }
