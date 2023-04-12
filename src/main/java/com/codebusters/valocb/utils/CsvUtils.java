@@ -1,5 +1,6 @@
 package com.codebusters.valocb.utils;
 
+import com.codebusters.valocb.dtos.ClientCapitalDTO;
 import com.codebusters.valocb.dtos.WalletPriceDTO;
 import com.codebusters.valocb.models.*;
 import org.apache.commons.csv.CSVFormat;
@@ -24,6 +25,7 @@ public class CsvUtils {
     private final static String WALLET_HEADER = "Portfolio,Product,Underlying,Currency,Price";
     private final static String CLIENT_HEADER = "Product,Client,Quantity";
     private final static String WALLET_REPORT_HEADER = "PTF,Price";
+    private final static String CLIENT_REPORT_HEADER = "Client,Capital";
 
 
     public List<CurrencyExchange> parseCsvCurrencyExchange(String path) throws IOException {
@@ -149,6 +151,18 @@ public class CsvUtils {
 
             for (WalletPriceDTO walletPrice : walletPriceDTOS) {
                 csvPrinter.printRecord(walletPrice.getWalletName(), walletPrice.getPrice());
+            }
+
+            csvPrinter.flush();
+        }
+    }
+
+    public void generateClientsReport(List<ClientCapitalDTO> clientCapitalDTOS) throws IOException {
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("./outputs/Reporting-client.csv"));
+             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.Builder.create().setHeader(CLIENT_REPORT_HEADER).build())) {
+
+            for (ClientCapitalDTO clientCapital : clientCapitalDTOS) {
+                csvPrinter.printRecord(clientCapital.getClientName(), clientCapital.getCapital());
             }
 
             csvPrinter.flush();
