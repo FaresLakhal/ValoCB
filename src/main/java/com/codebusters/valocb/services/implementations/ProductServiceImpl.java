@@ -1,9 +1,6 @@
 package com.codebusters.valocb.services.implementations;
 
-import com.codebusters.valocb.models.CurrencyExchange;
-import com.codebusters.valocb.models.Product;
-import com.codebusters.valocb.models.Underlying;
-import com.codebusters.valocb.models.Wallet;
+import com.codebusters.valocb.models.*;
 import com.codebusters.valocb.services.interfaces.CurrencyExchangeService;
 import com.codebusters.valocb.services.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +42,25 @@ public class ProductServiceImpl implements ProductService {
         }
 
         return productPrices;
+    }
+
+    @Override
+    public int getProductQuantityForClient(List<Client> clients, String productName) {
+        if (clients == null || clients.isEmpty()) {
+            return 0;
+        }
+
+        int productQuantity = 0;
+        for (Client client : clients) {
+            Map<String, Integer> products = client.getProducts();
+            if (products != null) {
+                Integer quantity = products.get(productName);
+                if (quantity != null) {
+                    productQuantity += quantity;
+                }
+            }
+        }
+        return productQuantity;
     }
 
 }

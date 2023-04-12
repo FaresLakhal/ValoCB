@@ -10,5 +10,8 @@ import java.util.Map;
 
 public interface ProductService {
 
-    Map<String,Double> calculateProductPrice(List<Wallet> wallets, List<CurrencyExchange> currencyExchanges, String currency) throws IOException;
+    Map<String, Double> calculateProductPrice(List<Wallet> wallets, List<CurrencyExchange> currencyExchanges, String currency) throws IOException;
+
+    int getProductQuantityForClient(List<Client> clients, String productName);
+
 }
