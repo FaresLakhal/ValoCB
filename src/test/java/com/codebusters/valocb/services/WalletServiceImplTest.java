@@ -20,7 +20,7 @@ import java.util.Map;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class WalletServiceImplTest {
+class WalletServiceImplTest {
 
     @InjectMocks
     private WalletServiceImpl walletService;
@@ -30,7 +30,7 @@ public class WalletServiceImplTest {
     private CurrencyExchangeService currencyExchangeService;
 
     @Test
-    public void testCalculateWalletPriceWithEmptyWallet() throws IOException {
+    void testCalculateWalletPriceWithEmptyWallet() throws IOException {
 
         List<WalletPriceDTO> walletPriceDTOS = walletService.calculateWalletPrice(Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), "EUR");
         Assertions.assertEquals(0, walletPriceDTOS.size());
@@ -38,7 +38,7 @@ public class WalletServiceImplTest {
     }
 
     @Test
-    public void testCalculateWalletPrice() throws IOException {
+    void testCalculateWalletPrice() throws IOException {
 
         List<Client> clients = Arrays.asList(
                 new Client("C1", Map.of("P1", 1)),

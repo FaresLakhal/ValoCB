@@ -3,10 +3,10 @@ package com.codebusters.valocb.dtos;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class WalletPriceDTOTest {
+class WalletPriceDTOTest {
 
     @Test
-    public void testConstructorAndGetters() {
+    void testConstructorAndGetters() {
 
         WalletPriceDTO walletPriceDTO = new WalletPriceDTO("PTF1", 312.14);
 
@@ -16,7 +16,7 @@ public class WalletPriceDTOTest {
     }
 
     @Test
-    public void testSetters() {
+    void testSetters() {
 
         WalletPriceDTO walletPriceDTO = new WalletPriceDTO("PTF1", 312.14);
 

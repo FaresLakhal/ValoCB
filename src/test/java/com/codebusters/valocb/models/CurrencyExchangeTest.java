@@ -3,10 +3,10 @@ package com.codebusters.valocb.models;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class CurrencyExchangeTest {
+class CurrencyExchangeTest {
 
     @Test
-    public void testConstructorAndGetters() {
+    void testConstructorAndGetters() {
         CurrencyExchange currencyExchange = new CurrencyExchange("USD", "EUR", 0.85);
         Assertions.assertEquals("USD", currencyExchange.getSourceCurrency());
         Assertions.assertEquals("EUR", currencyExchange.getTargetCurrency());
@@ -14,7 +14,7 @@ public class CurrencyExchangeTest {
     }
 
     @Test
-    public void testSetters() {
+    void testSetters() {
         CurrencyExchange currencyExchange = new CurrencyExchange("USD", "EUR", 0.85);
         currencyExchange.setSourceCurrency("EUR");
         currencyExchange.setTargetCurrency("GBP");

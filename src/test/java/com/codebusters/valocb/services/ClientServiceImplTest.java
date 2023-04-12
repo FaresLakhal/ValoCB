@@ -19,7 +19,7 @@ import java.util.Map;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class ClientServiceImplTest {
+class ClientServiceImplTest {
     @Mock
     private CurrencyExchangeService currencyExchangeService;
 
@@ -30,7 +30,7 @@ public class ClientServiceImplTest {
     private ClientServiceImpl clientService;
 
     @Test
-    public void testCalculateClientCapital() throws IOException {
+    void testCalculateClientCapital() throws IOException {
         List<Client> clients = Arrays.asList(
                 new Client("C1", Map.of("P1", 1)),
                 new Client("C2", Map.of("P2", 2))

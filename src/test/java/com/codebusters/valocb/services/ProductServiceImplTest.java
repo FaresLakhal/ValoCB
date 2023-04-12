@@ -15,7 +15,7 @@ import java.util.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class ProductServiceImplTest {
+class ProductServiceImplTest {
 
     @Mock
     private CurrencyExchangeService currencyExchangeService;
@@ -24,7 +24,7 @@ public class ProductServiceImplTest {
     private ProductServiceImpl productService;
 
     @Test
-    public void testCalculateProductPrice() throws IOException {
+    void testCalculateProductPrice() throws IOException {
         List<Wallet> wallets = new ArrayList<>(2);
         wallets.add(new Wallet("PTF1", Arrays.asList(
                 new Product("P1", Arrays.asList(

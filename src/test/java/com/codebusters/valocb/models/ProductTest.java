@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class ProductTest {
+class ProductTest {
 
     @Test
-    public void testConstructorAndGetters() {
+    void testConstructorAndGetters() {
 
         Product product = new Product("P1", List.of(new Underlying("U11", "EUR", 12.3)));
 
@@ -21,7 +21,7 @@ public class ProductTest {
     }
 
     @Test
-    public void testSetters() {
+    void testSetters() {
 
         Product product = new Product("P1", List.of(new Underlying("U11", "EUR", 12.3)));
         product.setName("P2");

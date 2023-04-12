@@ -4,7 +4,6 @@ public class Underlying {
 
     private String name;
 
-//    private String productName;
     private String currency;
 
     private double price;

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 @SpringBootTest
-public class CurrencyExchangeServiceImplTest {
+class CurrencyExchangeServiceImplTest {
     @InjectMocks
     private CurrencyExchangeServiceImpl currencyExchangeService;
 

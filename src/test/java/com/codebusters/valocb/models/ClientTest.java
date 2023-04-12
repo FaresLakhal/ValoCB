@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ClientTest {
+class ClientTest {
 
     @Test
-    public void testConstructorAndGetters() {
+    void testConstructorAndGetters() {
         Map<String, Integer> products = new HashMap<>(2);
         products.put("P1", 10);
         products.put("P2", 20);
@@ -24,7 +24,7 @@ public class ClientTest {
     }
 
     @Test
-    public void testSetters() {
+    void testSetters() {
         Map<String, Integer> products = new HashMap<>(2);
         products.put("P1", 10);
         products.put("P2", 20);

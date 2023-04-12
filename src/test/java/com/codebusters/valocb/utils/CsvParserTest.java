@@ -8,7 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.IOException;
 import java.util.List;
 
-public class CsvParserTest {
+class CsvParserTest {
 
     @Test
     void testParseCurrencyExchange() throws IOException {
@@ -63,7 +63,7 @@ public class CsvParserTest {
     }
 
     @Test
-    public void testParseCsvClient() throws IOException {
+    void testParseCsvClient() throws IOException {
         CsvUtils csvUtils = new CsvUtils();
         String filePath = new ClassPathResource("ProductTest.csv").getFile().getPath();
         List<Client> clients = csvUtils.parseCsvClient(filePath);

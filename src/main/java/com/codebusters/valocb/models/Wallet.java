@@ -1,7 +1,6 @@
 package com.codebusters.valocb.models;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Wallet {
 

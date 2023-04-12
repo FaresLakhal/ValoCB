@@ -21,11 +21,12 @@ import java.util.Map;
 
 public class CsvUtils {
 
-    private final static String CURRENCY_EXCHANGE_HEADER = "Currency,Currency,Value";
-    private final static String WALLET_HEADER = "Portfolio,Product,Underlying,Currency,Price";
-    private final static String CLIENT_HEADER = "Product,Client,Quantity";
-    private final static String WALLET_REPORT_HEADER = "PTF,Price";
-    private final static String CLIENT_REPORT_HEADER = "Client,Capital";
+    private static final String CURRENCY_EXCHANGE_HEADER = "Currency,Currency,Value";
+    private static final String WALLET_HEADER = "Portfolio,Product,Underlying,Currency,Price";
+    private static final String CLIENT_HEADER = "Product,Client,Quantity";
+    private static final String WALLET_REPORT_HEADER = "PTF,Price";
+    private static final String CLIENT_REPORT_HEADER = "Client,Capital";
+    private static final String READING_FILE_ERROR = "An error occurred while reading the file.";
 
 
     public List<CurrencyExchange> parseCsvCurrencyExchange(String path) throws IOException {
@@ -48,7 +49,7 @@ public class CsvUtils {
             }
 
         } catch (IOException e) {
-            throw new IOException("An error occurred while reading the file.", e);
+            throw new IOException(READING_FILE_ERROR, e);
         }
 
         return currencyExchangeList;
@@ -94,7 +95,7 @@ public class CsvUtils {
             }
 
         } catch (IOException e) {
-            throw new IOException("An error occurred while reading the file.", e);
+            throw new IOException(READING_FILE_ERROR, e);
         }
 
         return wallets;
@@ -120,7 +121,7 @@ public class CsvUtils {
             }
 
         } catch (IOException e) {
-            throw new IOException("An error occurred while reading the file.", e);
+            throw new IOException(READING_FILE_ERROR, e);
         }
 
         return clients;

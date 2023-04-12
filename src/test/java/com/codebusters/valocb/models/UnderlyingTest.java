@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UnderlyingTest {
+class UnderlyingTest {
 
     @Test
-    public void testConstructorAndGetters() {
+    void testConstructorAndGetters() {
         Underlying underlying = new Underlying("U11", "EUR", 10.2);
         assertEquals("U11", underlying.getName());
         assertEquals("EUR", underlying.getCurrency());
@@ -15,7 +15,7 @@ public class UnderlyingTest {
     }
 
     @Test
-    public void testSetters() {
+    void testSetters() {
         Underlying underlying = new Underlying("U11", "EUR", 10.2);
 
         underlying.setName("U12");

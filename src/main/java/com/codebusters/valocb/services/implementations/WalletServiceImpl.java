@@ -37,7 +37,7 @@ public class WalletServiceImpl implements WalletService {
     public List<WalletPriceDTO> calculateWalletPrice(List<Wallet> wallets, List<Client> clients, List<CurrencyExchange> currencyExchanges, String currency) throws IOException {
 
         if (wallets == null || wallets.isEmpty()) {
-            return Collections.EMPTY_LIST;
+            return Collections.emptyList();
         }
 
         Map<String, Double> productPrices = productService.calculateProductPrice(wallets, currencyExchanges, currency);

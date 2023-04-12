@@ -3,10 +3,10 @@ package com.codebusters.valocb.dtos;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ClientCapitalDTOTest {
+class ClientCapitalDTOTest {
 
     @Test
-    public void testConstructorAndGetters() {
+    void testConstructorAndGetters() {
 
         ClientCapitalDTO clientCapitalDTO = new ClientCapitalDTO("C1", 112.15);
         Assertions.assertEquals("C1", clientCapitalDTO.getClientName());
@@ -15,7 +15,7 @@ public class ClientCapitalDTOTest {
     }
 
     @Test
-    public void testSetters() {
+    void testSetters() {
 
         ClientCapitalDTO clientCapitalDTO = new ClientCapitalDTO("C1", 112.15);
 

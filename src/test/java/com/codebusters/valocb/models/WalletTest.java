@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class WalletTest {
+class WalletTest {
 
     @Test
-    public void testConstructorAndGetters() {
+    void testConstructorAndGetters() {
 
         Wallet wallet = new Wallet("PTF1", List.of(new Product("P1", List.of(new Underlying("U11", "EUR", 12.3)))));
 
@@ -18,7 +18,7 @@ public class WalletTest {
     }
 
     @Test
-    public void testSetters() {
+    void testSetters() {
 
         Wallet wallet = new Wallet("PTF1", List.of(new Product("P1", List.of(new Underlying("U11", "EUR", 12.3)))));
 
