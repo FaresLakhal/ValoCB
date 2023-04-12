@@ -1,11 +1,13 @@
 package com.codebusters.valocb.utils;
 
+import com.codebusters.valocb.dtos.WalletPriceDTO;
 import com.codebusters.valocb.models.*;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
-import org.springframework.core.io.ClassPathResource;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -21,6 +23,7 @@ public class CsvUtils {
     private final static String CURRENCY_EXCHANGE_HEADER = "Currency,Currency,Value";
     private final static String WALLET_HEADER = "Portfolio,Product,Underlying,Currency,Price";
     private final static String CLIENT_HEADER = "Product,Client,Quantity";
+    private final static String WALLET_REPORT_HEADER = "PTF,Price";
 
 
     public List<CurrencyExchange> parseCsvCurrencyExchange(String path) throws IOException {
@@ -138,6 +141,18 @@ public class CsvUtils {
             client.setProducts(new HashMap<>(5));
         }
         return client.getProducts();
+    }
+
+    public void generateWalletsReport(List<WalletPriceDTO> walletPriceDTOS) throws IOException {
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("./outputs/Reporting-portfolio.csv"));
+             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.Builder.create().setHeader(WALLET_REPORT_HEADER).build())) {
+
+            for (WalletPriceDTO walletPrice : walletPriceDTOS) {
+                csvPrinter.printRecord(walletPrice.getWalletName(), walletPrice.getPrice());
+            }
+
+            csvPrinter.flush();
+        }
     }
 
 }
