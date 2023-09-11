@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Properties>
+		<property name="graylogHost">${bundle:application-prod:app.monitoring.host}</property>
+		<property name="graylogPort">${bundle:application-prod:app.monitoring.port}</property>
+		<property name="hostName">${env:HOST_NAME}</property>
+	</Properties>
+	<Appenders>
+
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{ISO8601} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%logger{36}{1.}}{bright,yellow} %L %X{traceId}: %msg%n%throwable" />
+		</Console>
+
+		<Gelf name="gelf" host="tcp:${graylogHost}?readTimeout=10s&amp;connectionTimeout=10s&amp;deliveryAttempts=5&amp;keepAlive=true"
+			port="${graylogPort}" version="1.1" extractStackTrace="true"
+			filterStackTrace="true" mdcProfiling="true" includeFullMdc="true"
+			maximumMessageSize="8192" originHost="%host">
+			<Field name="timestamp" pattern="%d{dd MMM yyyy HH:mm:ss,SSS}" />
+			<Field name="X-B3-SpanId" pattern="%X{spanId}" />
+			<Field name="X-B3-TraceId" pattern="%X{traceId}" />
+			<Field name="full_message" pattern="[%C{1}:%L] %n%msg" />
+			<Field name="simpleClassName" pattern="%C{1}" />
+			<Field name="className" pattern="%logger{36}" />
+			<Field name="line" pattern="%L" />
+			<Field name="hostName" pattern="${hostName}" />
+			<Field name="level" pattern="%level" />
+			<Field name="level_name" pattern="%-5level" />
+			<Field name="message" pattern="%msg" />
+			<Field name="serviceName" pattern="%host" />
+			<Field name="thread_name" pattern="%t" />
+			
+		</Gelf>
+
+		<Async name="AsyncGelf" includeLocation="true">
+			<AppenderRef ref="gelf" />
+		</Async>
+
+	</Appenders>
+	<Loggers>
+		<root level="WARN">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="AsyncGelf" />
+		</root>
+	</Loggers>
+
+
+</Configuration>

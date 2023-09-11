@@ -1,0 +1,3 @@
+spring:
+  config:
+    use-legacy-processing: true

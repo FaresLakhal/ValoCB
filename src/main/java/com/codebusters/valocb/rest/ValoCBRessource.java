@@ -27,10 +27,22 @@ import java.util.Map;
 @RequestMapping("/valocb")
 public class ValoCBRessource {
 
-    @Autowired
+    //    @Autowired
     private WalletService walletService;
-    @Autowired
+
+    @Autowired (required = false)
+    public void setWalletService(WalletService walletService) {
+        this.walletService = walletService;
+    }
+
+    //    @Autowired
     private ClientService clientService;
+
+    @Autowired
+    public void setClientService(ClientService clientService) {
+        this.clientService = clientService;
+    }
+
     CsvUtils csvUtils = new CsvUtils();
 
     @PostMapping(value = "/generateWalletReport")

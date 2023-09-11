@@ -1,0 +1,7 @@
+server:
+  port: 8095
+spring:
+  profiles:
+    active: prod
+#logging:
+#  config: classpath:log4j2-prod.xml
